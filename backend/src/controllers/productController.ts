@@ -5,7 +5,7 @@ import { getAuth } from "@clerk/express";
 export const getAllProducts = async (req: Request, res: Response) => {
     try {
         const products = await queries.getAllProducts()
-        res.status(200).json({ products });
+        res.status(200).json(products);
     } catch (error) {
         console.error("Error fetching products:", error);
         res.status(500).json({ message: "Internal server error" });
@@ -19,7 +19,7 @@ export const getMyProducts = async (req: Request, res: Response) => {
             return res.status(401).json({ message: "Unauthorized" });
         }
         const products = await queries.getproductsByuserId(userId)
-        res.status(200).json({ products });
+        res.status(200).json( products );
     } catch (error) {
         console.error("Error fetching user's products:", error);
         res.status(500).json({ message: "Internal server error" });
@@ -37,7 +37,7 @@ export const getProductById = async (req: Request, res: Response) => {
         if (!products) {
             return res.status(404).json({ message: "Product not found" });
         }
-        res.status(200).json({ products });
+        res.status(200).json( products );
     } catch (error) {
         console.error("Error fetching product by id:", error);
         res.status(500).json({ message: "Internal server error" });
@@ -57,7 +57,7 @@ export const createProduct = async (req: Request, res: Response) => {
         }
         const product = await queries.createProduct({ useId: userId, title, description, imageUrl })
 
-        res.status(201).json({ message: "Product created successfully", product });
+        res.status(201).json( product );
     } catch (error) {
         console.error("Error creating product:", error);
         res.status(500).json({ message: "Internal server error" });
@@ -84,7 +84,7 @@ export const updateProduct = async (req: Request, res: Response) => {
             return res.status(403).json({ message: "You can only update your own products" });
         }
         const product = await queries.updateProduct(id, { title, description, imageUrl })
-        res.status(200).json({ message: "Product updated successfully", product });
+        res.status(200).json( product);
 
     } catch (error) {
         console.error("Error updating product:", error);
