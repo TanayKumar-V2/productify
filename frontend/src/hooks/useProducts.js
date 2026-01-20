@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { createProduct, deleteProduct, getAllProducts, getProductsById } from "../lib/api"
+import { useQueryClient } from "@tanstack/react-query"
 
 export const useProducts=()=>{
     const result =useQuery({queryKey:["products"],queryFn:getAllProducts})
@@ -18,8 +19,13 @@ export const useProduct=(id)=>{
     })
 }
 
-export const useDeleteProduct=(id)=>{
-    return useMutation({
-        mutationFn:()=>deleteProduct
-    })
-}
+export const useDeleteProduct = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: deleteProduct,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["myProducts"] });
+    },
+  });
+};
