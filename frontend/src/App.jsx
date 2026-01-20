@@ -21,11 +21,11 @@ function App(){
       <Navbar/>
       <main className="max-w-5xl mx-auto px-4 py-8">
         <Routes>
-          <Route path="/" element={isSignedIn ? <HomePage/>: <Navigate to="/"/>}/>
-          <Route path="/create" element={<CreatePage/>}/>
+          <Route path="/" element={<HomePage/>}/>
+          <Route path="/create" element={isSignedIn ? <CreatePage/>:<Navigate to={<HomePage/>}/>}/>
           <Route path="/product/:id" element={<ProductPage/>}/>
-          <Route path="/profile" element={<ProfilePage/>}/>
-          <Route path="/edit/:id" element={<EditPage/>}/>
+          <Route path="/profile" element={isSignedIn ? <ProfilePage/>: <Navigate to={<HomePage/>}/>}/>
+          <Route path="/edit/:id" element={isSignedIn ? <EditPage/> : <Navigate to={<HomePage/>}/>}/>
         </Routes>
       </main>
     </div>
