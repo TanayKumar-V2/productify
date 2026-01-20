@@ -14,7 +14,7 @@ function EditPage() {
 
   if (isLoading) return <LoadingSpinner />;
 
-  if (!product || product.userId !== userId) {
+  if (!product || product.useId !== userId) {
     return (
       <div className="card bg-base-300 max-w-md mx-auto">
         <div className="card-body items-center text-center">
