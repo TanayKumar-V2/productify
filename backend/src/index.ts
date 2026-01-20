@@ -13,7 +13,7 @@ dotenv.config();
 const app=express()
 
 app.use(clerkMiddleware())
-app.use(cors({origin:ENV.frontendUrl}))
+app.use(cors({origin:ENV.frontendUrl, credentials:true}))
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
