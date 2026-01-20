@@ -4,7 +4,7 @@ import * as commentController from "../controllers/commentController.js";
 
 const router=Router()
 
-router.post("/", requireAuth() ,commentController.createComment)
+router.post("/:productId", requireAuth() ,commentController.createComment)
 router.delete("/:commentId", requireAuth() ,commentController.deleteComment)
 
 export default router;

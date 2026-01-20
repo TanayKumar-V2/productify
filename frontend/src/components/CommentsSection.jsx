@@ -6,7 +6,7 @@ import { useState } from "react"
 function CommentsSection({productId,comments=[],currentUserId}) {
 
     const{isSignedIn}=useAuth()
-    const{content,setContent}=useState("")
+    const[content,setContent]=useState("")
     const createComment=useCreateComment()
     const deleteComment=useDeleteComment()
 

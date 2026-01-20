@@ -114,7 +114,6 @@ function ProductPage() {
         </div>
       </div>
 
-      {/* Comments */}
       <div className="card bg-base-300">
         <div className="card-body">
           <CommentsSection productId={id} comments={product.comments} currentUserId={userId} />
